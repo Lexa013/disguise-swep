@@ -30,6 +30,7 @@ SWEP.Secondary.Ammo = "none"
 SWEP.Skins = {
 	-- team                 -- preview
     [TEAM_CITIZEN] = "models/player/gman_high.mdl",
+    [YOUR TEAM INDEX] = "Model you want as preview",
 }
 
 function SWEP:Initialize()
