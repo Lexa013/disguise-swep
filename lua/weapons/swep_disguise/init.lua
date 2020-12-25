@@ -8,7 +8,7 @@ util.AddNetworkString("SwepDisguise::Change")
 
 net.Receive("SwepDisguise::Change", function(len, ply)
 	if not ply:GetActiveWeapon() == "swep_disguise" then return end
-	if not ply:Alive() then ply:ChatPrint("Vous êtes mort vous ne pouvez donc pas changer votre skin !") return end
+	if not ply:Alive() then ply:ChatPrint("Deads can't change their clothes ¯\_(ツ)_/¯") return end
 	local string = net.ReadString()
 	local key = net.ReadUInt(8)
 
