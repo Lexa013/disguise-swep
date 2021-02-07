@@ -8,24 +8,16 @@ util.AddNetworkString("SwepDisguise::Change")
 
 net.Receive("SwepDisguise::Change", function(len, ply)
 	if not ply:GetActiveWeapon():GetClass() == "swep_disguise" then return end
-	if not ply:Alive() then ply:ChatPrint("Deads can't change their clothes ¯\\_(ツ)_/¯") return end
+	if not ply:Alive() then ply:ChatPrint("Deads can't change their clothes ¯\_(ツ)_/¯") return end
 	local string = net.ReadString()
 	local key = net.ReadUInt(8)
 
 	local teammodels = RPExtraTeams[ply:Team()].model
 	local keymodels = RPExtraTeams[key].model
 	
-	if string == "reset" then 
-		if istable(teammodels) then
-			ply:SetModel(table.Random(teammodels))
-		else
-			ply:SetModel(teammodels)
-		end
+	if string == "reset" then
+		ply:SetModel( istable(teammodels) and ply:SetModel(table.Random(teammodels)) or ply:SetModel(teammodels) )
 	else
-		if istable(keymodels) then
-			ply:SetModel(table.Random(keymodels))
-		else
-			ply:SetModel(keymodels)
-		end
+		ply:SetModel( istable(keymodels) and ply:SetModel(table.Random(keymodels)) or ply:SetModel(keymodels) )
 	end
 end)
